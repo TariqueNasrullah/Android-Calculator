@@ -318,15 +318,26 @@ public class MainActivity extends AppCompatActivity {
 
         checkNumberDisplay();
 
+        stringSpecial = operationsDisplay.getText().toString();
 
-        buttonCE.setText("DEL");
-        operationsDisplay.setText(operationsDisplay.getText() + "-");
-        numberDisplay.setText("-");
-        numberClicked=false;
-        charBracketCloseCount=0;
-        charBracketCloseCount=0;
-        charBracketOpenCount=0;
-        dotCount=0;
+        if(stringSpecial.endsWith("sqrt(")) {
+
+        }
+
+        else if(stringSpecial.endsWith("-")) {
+
+        }
+
+        else {
+            buttonCE.setText("DEL");
+            operationsDisplay.setText(operationsDisplay.getText() + "-");
+            numberDisplay.setText("-");
+            numberClicked = false;
+            charBracketCloseCount = 0;
+            charBracketCloseCount = 0;
+            charBracketOpenCount = 0;
+            dotCount = 0;
+        }
 
     }
 
@@ -508,6 +519,11 @@ public class MainActivity extends AppCompatActivity {
 
                     else if (stringSpecial.endsWith("sin(") || stringSpecial.endsWith("cos(") || stringSpecial.endsWith("tan(")) {
                         stringSpecial = stringSpecial.substring(0, stringSpecial.length() - 4);
+                        operationsDisplay.setText(stringSpecial);
+                    }
+
+                    else if(stringSpecial.endsWith("sqrt(")) {
+                        stringSpecial = stringSpecial.substring(0, stringSpecial.length() - 5);
                         operationsDisplay.setText(stringSpecial);
                     }
 
