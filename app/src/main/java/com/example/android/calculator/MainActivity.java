@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -118,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
         dotCount = savedInstanceState.getInt("dotCOunt");
     }
 
+=======
+>>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
     public void clickButton1(View v) {
 
         numberDisplay.setText(numberDisplay.getText()+"1");
@@ -361,6 +364,13 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+<<<<<<< HEAD
+=======
+        else if(stringSpecial.endsWith("-")) {
+
+        }
+
+>>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
         else {
             buttonCE.setText("DEL");
             operationsDisplay.setText(operationsDisplay.getText() + "-");
@@ -555,6 +565,14 @@ public class MainActivity extends AppCompatActivity {
                         operationsDisplay.setText(stringSpecial);
                     }
 
+<<<<<<< HEAD
+=======
+                    else if(stringSpecial.endsWith("sqrt(")) {
+                        stringSpecial = stringSpecial.substring(0, stringSpecial.length() - 5);
+                        operationsDisplay.setText(stringSpecial);
+                    }
+
+>>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
                     else if(stringSpecial.endsWith(".")) {
                         dotCount=0;
                         stringSpecial = stringSpecial.substring(0, stringSpecial.length()-1);
@@ -595,6 +613,10 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     else {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
                         stringSpecial = stringSpecial.substring(0, stringSpecial.length() - 1);
                         numberDisplay.setText(stringSpecial);
                     }
