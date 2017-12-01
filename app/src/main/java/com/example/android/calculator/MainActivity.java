@@ -81,6 +81,43 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        stringSpecial = numberDisplay.getText().toString();
+        outState.putString("numberDisplay", stringSpecial);
+
+        stringSpecial = operationsDisplay.getText().toString();
+        outState.putString("operationsDisplay", stringSpecial);
+
+        outState.putDouble("resultValue", value);
+
+        outState.putBoolean("numberClicked", numberClicked);
+
+        outState.putInt("bracketOpenCount", charBracketOpenCount);
+        outState.putInt("bracketCloseCOunt", charBracketCloseCount);
+        outState.putInt("charInExceed", charInExceed);
+        outState.putInt("dotCount", dotCount);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        numberDisplay.setText(savedInstanceState.getString("numberDisplay"));
+        operationsDisplay.setText(savedInstanceState.getString("operationsDisplay"));
+
+        value = savedInstanceState.getDouble("resultValue");
+
+        numberClicked = savedInstanceState.getBoolean("numberClicked");
+
+        charBracketOpenCount = savedInstanceState.getInt("bracketOpenCount");
+        charBracketCloseCount = savedInstanceState.getInt("bracketCloseCount");
+        charInExceed = savedInstanceState.getInt("charInExceed");
+        dotCount = savedInstanceState.getInt("dotCOunt");
+    }
+
     public void clickButton1(View v) {
 
         numberDisplay.setText(numberDisplay.getText()+"1");
@@ -318,15 +355,22 @@ public class MainActivity extends AppCompatActivity {
 
         checkNumberDisplay();
 
+        stringSpecial = operationsDisplay.getText().toString();
 
-        buttonCE.setText("DEL");
-        operationsDisplay.setText(operationsDisplay.getText() + "-");
-        numberDisplay.setText("-");
-        numberClicked=false;
-        charBracketCloseCount=0;
-        charBracketCloseCount=0;
-        charBracketOpenCount=0;
-        dotCount=0;
+        if(stringSpecial.endsWith("sqrt(")) {
+
+        }
+
+        else {
+            buttonCE.setText("DEL");
+            operationsDisplay.setText(operationsDisplay.getText() + "-");
+            numberDisplay.setText("-");
+            numberClicked = false;
+            charBracketCloseCount = 0;
+            charBracketCloseCount = 0;
+            charBracketOpenCount = 0;
+            dotCount = 0;
+        }
 
     }
 
@@ -551,7 +595,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     else {
-
                         stringSpecial = stringSpecial.substring(0, stringSpecial.length() - 1);
                         numberDisplay.setText(stringSpecial);
                     }
