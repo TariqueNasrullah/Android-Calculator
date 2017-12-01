@@ -2,11 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-<<<<<<< HEAD
     buildToolsVersion "25.0.0"
-=======
     buildToolsVersion '26.0.2'
->>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
     defaultConfig {
         applicationId "com.example.android.calculator"
         minSdkVersion 14

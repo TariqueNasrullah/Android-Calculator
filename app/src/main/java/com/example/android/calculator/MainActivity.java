@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -116,11 +115,9 @@ public class MainActivity extends AppCompatActivity {
         charBracketOpenCount = savedInstanceState.getInt("bracketOpenCount");
         charBracketCloseCount = savedInstanceState.getInt("bracketCloseCount");
         charInExceed = savedInstanceState.getInt("charInExceed");
-        dotCount = savedInstanceState.getInt("dotCOunt");
+        dotCount = savedInstanceState.getInt("dotCount");
     }
 
-=======
->>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
     public void clickButton1(View v) {
 
         numberDisplay.setText(numberDisplay.getText()+"1");
@@ -199,11 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        else if(stringSpecial.endsWith("(")) {
-
-        }
-
-        else if(stringSpecial.endsWith("+") || stringSpecial.endsWith("-") || stringSpecial.endsWith("*") || stringSpecial.endsWith("/")) {
+        else if(stringSpecial.endsWith("(") || stringSpecial.endsWith("+") || stringSpecial.endsWith("-") || stringSpecial.endsWith("*") || stringSpecial.endsWith("/")) {
 
         }
 
@@ -212,21 +205,20 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
                 dotCount++;
-                numberDisplay.setText(numberDisplay.getText() + ".");
                 operationsDisplay.setText(operationsDisplay.getText() + ".");
+                stringSpecial = numberDisplay.getText().toString();
+                if(!stringSpecial.contains(".")) {
+                numberDisplay.setText(numberDisplay.getText() + "."); }
             }
         }
     }
 
     public void clickButtonBracketsOpen(View v) {
 
-
             numberDisplay.setText(numberDisplay.getText()+"(");
             operationsDisplay.setText(operationsDisplay.getText()+"(");
             dotCount=0;
             numberClicked=false;
-
-
     }
 
     public void clickButtonBracketsClose(View v) {
@@ -261,7 +253,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickButtonExponentation(View view) {
 
+        stringSpecial = numberDisplay.getText().toString();
         if(numberClicked == false) {
+
+        }
+
+        else if(stringSpecial.endsWith("^")) {
 
         }
 
@@ -364,13 +361,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-<<<<<<< HEAD
-=======
-        else if(stringSpecial.endsWith("-")) {
-
-        }
-
->>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
         else {
             buttonCE.setText("DEL");
             operationsDisplay.setText(operationsDisplay.getText() + "-");
@@ -487,7 +477,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else {
-            numberDisplay.setText(null);
 
             stringNumber = operationsDisplay.getText().toString();
 
@@ -495,6 +484,10 @@ public class MainActivity extends AppCompatActivity {
 
             if(charBracketCloseCount > charBracketOpenCount) {
                 numberDisplay.setText("Invalid expression");
+            }
+
+            else if(stringNumber.contains("Infinity")) {
+                numberDisplay.setText("Infinity");
             }
 
             else {
@@ -565,14 +558,6 @@ public class MainActivity extends AppCompatActivity {
                         operationsDisplay.setText(stringSpecial);
                     }
 
-<<<<<<< HEAD
-=======
-                    else if(stringSpecial.endsWith("sqrt(")) {
-                        stringSpecial = stringSpecial.substring(0, stringSpecial.length() - 5);
-                        operationsDisplay.setText(stringSpecial);
-                    }
-
->>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
                     else if(stringSpecial.endsWith(".")) {
                         dotCount=0;
                         stringSpecial = stringSpecial.substring(0, stringSpecial.length()-1);
@@ -613,10 +598,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     else {
-<<<<<<< HEAD
-=======
 
->>>>>>> 8c9f4f540f3dd193547eb0945c195f523aaaa3d3
                         stringSpecial = stringSpecial.substring(0, stringSpecial.length() - 1);
                         numberDisplay.setText(stringSpecial);
                     }
